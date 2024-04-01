@@ -1,9 +1,11 @@
-<script setup>
+<script>
 
 </script>
 
 <template>
-  $END$
+  <div>Laser Show Samarqand</div>
+  <div>Laser Show Samarqand</div>
+
 </template>
 
 <style scoped>

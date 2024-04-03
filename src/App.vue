@@ -21,4 +21,7 @@ export default {
   text-align: center;
   color: #ffffff;
 }
+body {
+  margin: 0;
+}
 </style>

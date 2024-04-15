@@ -5,9 +5,11 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import {INITIAL_EVENTS,} from '/src/event-utils'
+import SelectLanguage from "@/components/SelectLanguage.vue";
 
 export default defineComponent({
   components: {
+    SelectLanguage,
     FullCalendar,
   },
 
@@ -17,7 +19,7 @@ export default defineComponent({
         plugins: [
           dayGridPlugin,
           timeGridPlugin,
-          interactionPlugin, // needed for dateClick
+          interactionPlugin,
         ],
         headerToolbar: {
           left: 'prev,next,today',
@@ -25,7 +27,7 @@ export default defineComponent({
           right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
         initialView: 'dayGridMonth',
-        events: INITIAL_EVENTS, // alternatively, use the `events` setting to fetch from a feed
+        events: INITIAL_EVENTS,
         editable: true,
         selectable: true,
         unselectAuto: false,
@@ -58,6 +60,7 @@ export default defineComponent({
 <template>
   <div class='demo-app'>
     <div class='demo-app-main'>
+      <select-language class="select-lang"></select-language>
       <FullCalendar
           class='demo-app-calendar'
           :options='calendarOptions'
@@ -99,6 +102,10 @@ b { /* used for event dates/times */
   margin-right: 3px;
 }
 
+.select-lang {
+  padding-top: 2em;
+}
+
 .demo-app {
   display: flex;
   min-height: 100%;
@@ -108,7 +115,7 @@ b { /* used for event dates/times */
 
 .demo-app-main {
   flex-grow: 1;
-  padding: 3em;
+  padding: 1em;
 }
 
 </style>

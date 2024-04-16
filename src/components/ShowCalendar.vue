@@ -4,7 +4,7 @@ import FullCalendar from '@fullcalendar/vue3'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import {INITIAL_EVENTS,} from '/src/event-utils'
+import {INITIAL_EVENTS} from '/src/event-utils'
 import SelectLanguage from "@/components/SelectLanguage.vue";
 
 export default defineComponent({
@@ -45,15 +45,21 @@ export default defineComponent({
       let startDate = ("0" + (dateStartObj.getDate())).slice(-2);
       let dateStartFormat = dateStartObj.getFullYear() + "-" + startMonth + "-" + startDate;
 
-      this.calendarOptions.events.push({
-        title: 'Шоу',
-        start: dateStartFormat,
-        rendering: 'background',
-        iconUrl: 'uzb.png',
-        isNew: true,
-      });
+      const newEventIndex = this.calendarOptions.events.findIndex(e => e.start === dateStartFormat && e.isNew);
+
+      if (newEventIndex > 0) {
+        this.calendarOptions.events.splice(newEventIndex, 1);
+      } else {
+        this.calendarOptions.events.push({
+          title: 'Шоу',
+          start: dateStartFormat,
+          rendering: 'background',
+          iconUrl: 'japan.png',
+          isNew: true,
+        });
+      }
     },
-  }
+  },
 })
 </script>
 
